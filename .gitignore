@@ -1,0 +1,20 @@
+# Dependencies
+vendor/
+
+# PHP tooling
+.phpunit.cache/
+.phpunit.result.cache
+var/phpstan/
+
+# Generated outputs
+var/env/*.env
+var/log/*.ndjson
+
+# IDE/editor
+.idea/
+.vscode/
+
+# OS / misc
+.DS_Store
+Thumbs.db
+

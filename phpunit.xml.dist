@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+  bootstrap="tests/bootstrap.php"
+  cacheResult="false"
+  colors="true"
+  stopOnFailure="false"
+  failOnWarning="true"
+  failOnRisky="true"
+  beStrictAboutOutputDuringTests="true"
+  failOnDeprecation="true"
+  failOnPhpunitDeprecation="true"
+  displayDetailsOnTestsThatTriggerDeprecations="true"
+  displayDetailsOnSkippedTests="true"
+>
+  <testsuites>
+    <testsuite name="Unit">
+      <directory>tests</directory>
+    </testsuite>
+  </testsuites>
+  <source>
+    <include>
+      <directory suffix=".php">src</directory>
+    </include>
+  </source>
+</phpunit>
+

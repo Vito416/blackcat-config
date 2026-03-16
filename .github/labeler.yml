@@ -1,0 +1,8 @@
+# .github/labeler.yml
+"src/**":    ["area:core"]
+"tests/**":  ["area:tests"]
+"docs/**":   ["docs"]
+"config/**": ["area:profiles"]
+"bin/**":    ["area:cli"]
+".github/**":["area:ci"]
+"**/*.md":   ["docs"]

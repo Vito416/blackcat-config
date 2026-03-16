@@ -1,0 +1,30 @@
+name: Bug report
+description: Report a bug in blackcat-config
+labels: [bug]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug and the expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: 1) … 2) … 3) …
+  - type: textarea
+    id: runtime
+    attributes:
+      label: Runtime / environment
+      description: OS, PHP version, whether you are on WSL/DrvFS, and how runtime config is provided.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / console output
+      render: shell
+  - type: textarea
+    id: extra
+    attributes:
+      label: Extra context

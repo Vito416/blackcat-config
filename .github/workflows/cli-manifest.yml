@@ -1,0 +1,55 @@
+name: CLI Manifest
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions: { contents: read }
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Checkout blackcat-cli-spec
+        uses: actions/checkout@v6
+        with:
+          repository: blackcatdatabase/blackcat-cli-spec
+          path: blackcat-cli-spec
+          token: ${{ secrets.BLACKCAT_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Checkout blackcat-cli
+        uses: actions/checkout@v6
+        with:
+          repository: blackcatacademy/blackcat-cli
+          ref: dev
+          path: cli
+          token: ${{ secrets.BLACKCAT_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer
+
+      - name: Install cli-spec dependencies
+        working-directory: blackcat-cli-spec
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Prepare minimal blackcat-cli config
+        run: |
+          cat > .blackcat-cli.ci.php <<'PHP'
+          <?php
+          $root = getcwd();
+          return [
+            'workspace_root' => $root,
+            'security' => ['allowed_roots' => [$root . DIRECTORY_SEPARATOR]],
+            'commands' => [],
+          ];
+          PHP
+
+      - name: Validate blackcat-cli.json (blackcat-cli)
+        env:
+          BLACKCAT_CLI_CONFIG: .blackcat-cli.ci.php
+        run: php cli/bin/blackcat verify

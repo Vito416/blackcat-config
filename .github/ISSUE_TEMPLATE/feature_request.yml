@@ -1,0 +1,20 @@
+name: Feature request
+description: Propose an improvement for blackcat-config
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / motivation
+      description: What problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Outline the change (API surface, docs, migration story).
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / alternatives
