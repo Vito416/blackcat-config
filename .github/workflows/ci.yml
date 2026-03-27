@@ -21,7 +21,7 @@ jobs:
           tools: composer
 
       - name: Install dependencies
-        uses: ramsey/composer-install@v3
+        uses: ramsey/composer-install@v4
         with:
           composer-options: --no-interaction --prefer-dist
 
@@ -44,7 +44,7 @@ jobs:
           tools: composer
 
       - name: Install dependencies
-        uses: ramsey/composer-install@v3
+        uses: ramsey/composer-install@v4
         with:
           composer-options: --no-interaction --prefer-dist
 
